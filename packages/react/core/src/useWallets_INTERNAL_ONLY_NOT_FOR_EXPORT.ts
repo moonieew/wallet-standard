@@ -41,7 +41,7 @@ export function useWallets_INTERNAL_ONLY_NOT_FOR_EXPORT(): readonly Wallet[] {
                     outputWallets.current = [...get()];
                     onStoreChange();
                 });
-                walletsToChangeListenerDisposeFn.set(wallet, dispose);
+                walletsToChangeListenerDisposeFn.set(wallet, dispose  || () => {});
                 return dispose;
             }
             const disposeRegisterListener = on('register', (...wallets) => {
